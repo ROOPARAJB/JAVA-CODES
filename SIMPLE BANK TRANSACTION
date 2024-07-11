@@ -1,0 +1,244 @@
+import java.util.Scanner;
+abstract class Bank
+{
+    int balance ;
+    abstract void withdraw(int w_amount);
+    abstract void deposit(int d_amount);
+
+    public void checkBalance()
+    {
+        System.out.println("Account Balance : "+ balance);
+    }
+}
+
+//SBI
+
+class SBI extends Bank
+{
+    public void withdraw (int w_amount)
+    {
+        if (w_amount <=balance) 
+        {
+            if (w_amount % 500 == 0 && w_amount > 0)
+            {
+                System.out.println ("Collect the cash of " + w_amount);
+                int new_balance = balance - w_amount;
+                System.out.println("Your current balance is  " + new_balance);
+            }
+            else 
+            {
+                System.out.println("Enter a amount that is multiple of 500");
+            }
+        }
+        else
+            {
+                System.out.println("Insufficient balance");
+            }
+    }
+
+    
+
+    void deposit(int d_amount)
+    {
+        if (d_amount <= 4000 && d_amount > 0)
+        {
+            int new_balance = balance + d_amount;
+            System.out.println("You withdrawn the amount : " +d_amount); 
+            System.out.println ("Your current balance is : " + new_balance);
+        }
+        else
+        {
+            System.out.println("You can deposit upto 4000");
+        }
+    }
+}
+
+//HDFC
+
+class HDFC extends Bank 
+{
+public void withdraw (int w_amount)
+    {
+        if (w_amount <=balance) 
+        {
+            if (w_amount % 1000 == 0 && w_amount > 0)
+            {
+                System.out.println ("Collect the cash of " + w_amount);
+                int new_balance = balance - w_amount;
+                System.out.println("Your current balance is  " + new_balance);
+            }
+            else 
+            {
+                System.out.println("Enter a amount that is multiple of 1000");
+            }
+        }
+        else
+            {
+                System.out.println("Insufficient balance");
+            }
+    }
+
+    
+
+    void deposit(int d_amount)
+    {
+        if (d_amount <= 5000 && d_amount > 0)
+        {
+            int new_balance = balance + d_amount;
+            System.out.println("You withdrawn the amount : " +d_amount); 
+            System.out.println ("Your current balance is : " + new_balance);
+        }
+        else
+        {
+            System.out.println("You can deposit upto 5000");
+        }
+    }
+}
+
+//AXIS
+
+class  AXIS extends Bank 
+{
+    public void withdraw (int w_amount)
+    {
+        if (w_amount <=balance) 
+        {
+            if (w_amount % 100 == 0 && w_amount > 0)
+            {
+                System.out.println ("Collect the cash of " + w_amount);
+                int new_balance = balance - w_amount;
+                System.out.println("Your current balance is  " + new_balance);
+            }
+            else 
+            {
+                System.out.println("Enter a amount that is multiple of 100");
+            }
+        }
+        else
+            {
+                System.out.println("Insufficient balance");
+            }
+    }
+
+    
+
+    void deposit(int d_amount)
+    {
+        if (d_amount <= 10000 && d_amount > 0)
+        {
+            int new_balance = balance + d_amount;
+            System.out.println("You withdrawn the amount : " +d_amount); 
+            System.out.println ("Your current balance is : " + new_balance);
+        }
+        else
+        {
+            System.out.println("You can deposit upto 10000");
+        }
+    }
+}
+
+//Main 
+class BankMain
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		SBI sb = new SBI();
+		HDFC hd = new HDFC();
+		AXIS ax = new AXIS();
+
+		while(true)
+		{
+			System.out.println("*****Bank*****\nSelect your Bank \n 1.SBI \n 2. HDFC \n 3. AXIS");
+			int choice = sc.nextInt();
+			if(choice==1)
+			{
+				System.out.println("\t1.Withdraw");
+				System.out.println("\t2.Deposit");
+				System.out.println("\t3.Check balance");
+				System.out.println("\tPlease choose from above option");
+				int ch = sc.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount u want to withdraw");
+					int  amount = sc.nextInt();
+					sb.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount u want to deposit");
+					int amount = sc.nextInt();
+					sb.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					sb.checkBalance();
+				}
+				else 
+				{
+					System.out.println("Invalid option please choose from 1-2");
+				}
+			}
+			else if(choice==2)
+			{
+				System.out.println("\t1.Withdraw");
+				System.out.println("\t2.Deposit");
+				System.out.println("\t3.Check balance");
+				System.out.println("\tPlease choose from above option");
+				int ch = sc.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount u want to withdraw");
+					int amount = sc.nextInt();
+					hd.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount u want to deposit");
+					int amount = sc.nextInt();
+					hd.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					hd.checkBalance();
+				}
+				else 
+				{
+					System.out.println("Invalid option please choose from 1-2");
+				}
+			}
+			else if(choice==3)
+			{
+				System.out.println("\t1.Withdraw");
+				System.out.println("\t2.Deposit");
+				System.out.println("\t3.Axis bank");
+				System.out.println("\tPlease choose from above option");
+				int ch = sc.nextInt();
+				if(ch==1)
+				{
+					System.out.println("How much amount u want to withdraw");
+					int amount = sc.nextInt();
+					ax.withdraw(amount);
+				}
+				else if(ch==2)
+				{
+					System.out.println("How much amount u want to deposit");
+					int  amount = sc.nextInt();
+					ax.deposit(amount);
+				}
+				else if(ch==3)
+				{
+					ax.checkBalance();
+				}
+				else 
+				{
+					System.out.println("Invalid option please choose from 1-2");
+				}
+			}
+			else 
+			{
+				System.out.println("Invalid option please select from 1-3");
+			}
+		}
+	}
+}
